@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=XML Copy Editor
+GenericName=XML Editor
+Comment=Fast, free, validating XML editor
+Icon=net.sourceforge.xmlcopyeditor
+Exec=xmlcopyeditor %U
+Terminal=false
+Categories=Development;Utility;TextEditor;
+MimeType=text/xml;application/xml;application/xslt+xml;application/xhtml+xml;
+Keywords=xml;editor;validation;xslt;xpath;docbook;dita;
+StartupNotify=true

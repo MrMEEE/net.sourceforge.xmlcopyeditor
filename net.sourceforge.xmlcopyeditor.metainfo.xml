@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.sourceforge.xmlcopyeditor</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <name>XML Copy Editor</name>
+  <summary>Fast, free, validating XML editor</summary>
+  
+  <description>
+    <p>
+      XML Copy Editor is an XML editor focusing on editing document markup
+      languages like DITA, DocBook, and WordprocessingML. It provides a fast
+      and intuitive interface for creating and editing XML documents with
+      validation support.
+    </p>
+    <p>
+      Key features:
+    </p>
+    <ul>
+      <li>DTD/XML Schema/RELAX NG validation</li>
+      <li>XSLT and XPath support</li>
+      <li>Pretty-printing and syntax highlighting</li>
+      <li>Element folding for better navigation</li>
+      <li>Tag completion and tag locking</li>
+      <li>Tag-free editing mode</li>
+      <li>Built-in support for XHTML, XSL, DocBook and TEI</li>
+      <li>XML Schema generation</li>
+      <li>Spell checking with Enchant</li>
+    </ul>
+  </description>
+  
+  <launchable type="desktop-id">net.sourceforge.xmlcopyeditor.desktop</launchable>
+  
+  <url type="homepage">https://xml-copy-editor.sourceforge.io/</url>
+  <url type="bugtracker">https://sourceforge.net/p/xml-copy-editor/bugs/</url>
+  <url type="help">https://xml-copy-editor.wiki.sourceforge.net/</url>
+  
+  <screenshots>
+    <screenshot type="default">
+      <caption>XML Copy Editor main window</caption>
+      <image>https://a.fsdn.com/con/app/proj/xml-copy-editor/screenshots/151221.jpg</image>
+    </screenshot>
+  </screenshots>
+  
+  <categories>
+    <category>Development</category>
+    <category>TextEditor</category>
+    <category>Utility</category>
+  </categories>
+  
+  <content_rating type="oars-1.1" />
+  
+  <releases>
+    <release version="1.3.1.0" date="2022-10-08">
+      <description>
+        <p>Bug fixes and improvements:</p>
+        <ul>
+          <li>Fix layout assertion</li>
+          <li>Keep running when spell checking fails</li>
+          <li>Support libenchant-2</li>
+          <li>Fix DDE error on Windows</li>
+          <li>Migrate to PCRE2</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  
+  <provides>
+    <binary>xmlcopyeditor</binary>
+  </provides>
+  
+  <developer_name>Zane U. Ji</developer_name>
+</component>
