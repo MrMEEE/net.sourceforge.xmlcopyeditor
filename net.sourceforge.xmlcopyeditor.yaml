@@ -90,8 +90,19 @@ modules:
       # Manually install the binary and required files (skip broken make install)
       - install -Dm755 src/xmlcopyeditor /app/bin/xmlcopyeditor
       - mkdir -p /app/share/xmlcopyeditor
-      - cp -r catalog copying dtd rng templates xsl /app/share/xmlcopyeditor/ || true
-      - cp -r po /app/share/locale || true
+      # Copy all data directories
+      - cp -r catalog /app/share/xmlcopyeditor/
+      - cp -r copying /app/share/xmlcopyeditor/
+      - cp -r dtd /app/share/xmlcopyeditor/
+      - cp -r rng /app/share/xmlcopyeditor/
+      - cp -r templates /app/share/xmlcopyeditor/
+      - cp -r xsl /app/share/xmlcopyeditor/
+      - cp -r png /app/share/xmlcopyeditor/
+      - cp -r help /app/share/xmlcopyeditor/
+      # Create rulesets directory (expected by the app)
+      - mkdir -p /app/share/xmlcopyeditor/rulesets
+      # Install locales
+      - for po in po/*.po; do lang=$(basename $po .po); mkdir -p /app/share/locale/$lang/LC_MESSAGES; msgfmt $po -o /app/share/locale/$lang/LC_MESSAGES/xmlcopyeditor.mo; done || true
       # Install desktop file with correct name
       - install -Dm644 net.sourceforge.xmlcopyeditor.desktop /app/share/applications/net.sourceforge.xmlcopyeditor.desktop
       # Install icons from mac directory (PNG format)
