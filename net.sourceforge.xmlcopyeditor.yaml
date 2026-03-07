@@ -21,7 +21,7 @@ modules:
     sources:
       - type: archive
         url: https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.18.tar.xz
-        sha256: db0e50a80aa3bf64bb45d9423e5e437cffe9f8f9a5d91f3d2f682c4c5156a58f
+        sha256: db0e50a80aa3bf64bb45cbca5cf9f75efd9348cf2ac690b907435238c3cf81d7
 
   # Adwaita icon theme - Provides standard GTK icons for wxArtProvider
   - name: adwaita-icon-theme
