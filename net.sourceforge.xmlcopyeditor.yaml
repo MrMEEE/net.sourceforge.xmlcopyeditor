@@ -112,6 +112,12 @@ modules:
     build-commands:
       # Fix wxStandardPaths: Add SetAppName so it finds /app/share/xmlcopyeditor
       - sed -i '/#endif$/a\\t// Set application name for wxStandardPaths\n\tSetAppName ( _T ( "xmlcopyeditor" ) );\n' src/xmlcopyeditor.cpp
+      # Fix icon loading: Replace wxArtProvider calls with direct PNG loading
+      - sed -i 's/newBitmap = wxArtProvider::GetBitmap ( wxART_NEW, wxART_TOOLBAR );/newBitmap.LoadFile ( pngDir + _T ( "stock_new.png" ), wxBITMAP_TYPE_PNG );/' src/xmlcopyeditor.cpp
+      - sed -i 's/openBitmap = wxArtProvider::GetBitmap ( wxART_FILE_OPEN, wxART_TOOLBAR );/openBitmap.LoadFile ( pngDir + _T ( "stock_open.png" ), wxBITMAP_TYPE_PNG );/' src/xmlcopyeditor.cpp
+      - sed -i 's/saveBitmap = wxArtProvider::GetBitmap ( wxART_FILE_SAVE, wxART_TOOLBAR );/saveBitmap.LoadFile ( pngDir + _T ( "stock_save.png" ), wxBITMAP_TYPE_PNG );/' src/xmlcopyeditor.cpp
+      - sed -i 's/printBitmap = wxArtProvider::GetBitmap ( wxART_PRINT, wxART_TOOLBAR );/printBitmap.LoadFile ( pngDir + _T ( "stock_print.png" ), wxBITMAP_TYPE_PNG );/' src/xmlcopyeditor.cpp
+      - sed -i 's/spellingBitmap = wxArtProvider::GetBitmap ( _T ( "gtk-spell-check" ), wxART_TOOLBAR );/spellingBitmap.LoadFile ( pngDir + _T ( "stock_spellcheck.png" ), wxBITMAP_TYPE_PNG );/' src/xmlcopyeditor.cpp
       - ./configure --prefix=/app
       - make -j${FLATPAK_BUILDER_N_JOBS}
       # Manually install the binary and required files (skip broken make install)
