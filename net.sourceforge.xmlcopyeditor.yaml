@@ -58,6 +58,14 @@ modules:
         url: https://archive.apache.org/dist/xerces/c/3/sources/xerces-c-3.2.5.tar.gz
         sha256: 545cfcce6c4e755207bd1f27e319241e50e37c0c27250f11cda116018f1ef0f5
 
+  # intltool - Internationalization tool
+  - name: intltool
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
+        sha256: 67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd
+
   # XML Copy Editor
   - name: xmlcopyeditor
     buildsystem: autotools
