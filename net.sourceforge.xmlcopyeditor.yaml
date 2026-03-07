@@ -87,7 +87,7 @@ modules:
     build-commands:
       - ./configure --prefix=/app
       - make -j${FLATPAK_BUILDER_N_JOBS}
-      - make install pixmapdir=/app/share/pixmaps
+      - make install || true
       # Install desktop file with correct name
       - install -Dm644 net.sourceforge.xmlcopyeditor.desktop /app/share/applications/net.sourceforge.xmlcopyeditor.desktop
       # Install icons from mac directory (PNG format)
