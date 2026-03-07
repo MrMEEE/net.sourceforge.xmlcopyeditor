@@ -1,6 +1,6 @@
---- src/wraplibxml.cpp.orig	2026-03-07 01:21:32.681750347 +0100
-+++ src/wraplibxml.cpp	2026-03-07 01:21:32.683286974 +0100
-@@ -706,7 +706,7 @@
+--- a/src/wraplibxml.cpp	2026-03-07 01:21:32.681750347 +0100
++++ b/src/wraplibxml.cpp	2026-03-07 01:21:32.683286974 +0100
+@@ -706,7 +706,7 @@ int WrapLibxml::saveEncoding (
  
  wxString WrapLibxml::getLastError()
  {
@@ -9,7 +9,7 @@
  
  	if ( !err )
  		return nonParserError;
-@@ -722,7 +722,7 @@
+@@ -722,7 +722,7 @@ wxString WrapLibxml::getLastError()
  
  std::pair<int, int> WrapLibxml::getErrorPosition()
  {
