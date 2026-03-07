@@ -105,6 +105,9 @@ modules:
       
       - type: file
         path: xmlcopyeditor-wrapper.sh
+      
+      - type: file
+        path: gtk3-settings.ini
     
     build-commands:
       # Fix wxStandardPaths: Add SetAppName so it finds /app/share/xmlcopyeditor
@@ -114,6 +117,8 @@ modules:
       # Manually install the binary and required files (skip broken make install)
       - install -Dm755 src/xmlcopyeditor /app/bin/xmlcopyeditor
       - install -Dm755 xmlcopyeditor-wrapper.sh /app/bin/xmlcopyeditor-wrapper.sh
+      # Install GTK3 settings to configure icon theme
+      - install -Dm644 gtk3-settings.ini /app/etc/gtk-3.0/settings.ini
       - mkdir -p /app/share/xmlcopyeditor
       # Copy all data directories from src/
       - cp -r src/catalog /app/share/xmlcopyeditor/
