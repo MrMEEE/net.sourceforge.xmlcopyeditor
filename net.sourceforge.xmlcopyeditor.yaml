@@ -23,7 +23,17 @@ modules:
         url: https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.18.tar.xz
         sha256: db0e50a80aa3bf64bb45cbca5cf9f75efd9348cf2ac690b907435238c3cf81d7
 
-  # Adwaita icon theme - Provides standard GTK icons for wxArtProvider
+  # GNOME icon theme - Legacy GTK stock icons needed by wxWidgets
+  - name: gnome-icon-theme
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/gnome-icon-theme/3.12/gnome-icon-theme-3.12.0.tar.xz
+        sha256: 359e720b9202d3aba8d477752c4cd11eced368182281d51ffd64c8572b4e503a
+    post-install:
+      - gtk-update-icon-cache -q -t -f /app/share/icons/gnome || true
+
+  # Adwaita icon theme - Modern GTK icons
   - name: adwaita-icon-theme
     buildsystem: meson
     sources:
