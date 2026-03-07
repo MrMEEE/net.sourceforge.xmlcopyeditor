@@ -87,7 +87,11 @@ modules:
     build-commands:
       - ./configure --prefix=/app
       - make -j${FLATPAK_BUILDER_N_JOBS}
-      - make install || true
+      # Manually install the binary and required files (skip broken make install)
+      - install -Dm755 src/xmlcopyeditor /app/bin/xmlcopyeditor
+      - mkdir -p /app/share/xmlcopyeditor
+      - cp -r catalog copying dtd rng templates xsl /app/share/xmlcopyeditor/ || true
+      - cp -r po /app/share/locale || true
       # Install desktop file with correct name
       - install -Dm644 net.sourceforge.xmlcopyeditor.desktop /app/share/applications/net.sourceforge.xmlcopyeditor.desktop
       # Install icons from mac directory (PNG format)
