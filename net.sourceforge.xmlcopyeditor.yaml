@@ -13,9 +13,6 @@ finish-args:
   - --filesystem=home
   - --filesystem=xdg-documents
   - --socket=session-bus
-  # Access to host icon themes for wxArtProvider
-  - --filesystem=xdg-data/icons:ro
-  - --filesystem=/usr/share/icons:ro
 
 modules:
   # Adwaita icon theme - Provides standard GTK icons for wxArtProvider
