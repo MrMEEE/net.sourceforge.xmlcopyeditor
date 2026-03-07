@@ -90,15 +90,15 @@ modules:
       # Manually install the binary and required files (skip broken make install)
       - install -Dm755 src/xmlcopyeditor /app/bin/xmlcopyeditor
       - mkdir -p /app/share/xmlcopyeditor
-      # Copy all data directories
-      - cp -r catalog /app/share/xmlcopyeditor/
-      - cp -r copying /app/share/xmlcopyeditor/
-      - cp -r dtd /app/share/xmlcopyeditor/
-      - cp -r rng /app/share/xmlcopyeditor/
-      - cp -r templates /app/share/xmlcopyeditor/
-      - cp -r xsl /app/share/xmlcopyeditor/
-      - cp -r png /app/share/xmlcopyeditor/
-      - cp -r help /app/share/xmlcopyeditor/
+      # Copy all data directories from src/
+      - cp -r src/catalog /app/share/xmlcopyeditor/
+      - cp -r src/copying /app/share/xmlcopyeditor/
+      - cp -r src/dtd /app/share/xmlcopyeditor/
+      - cp -r src/rng /app/share/xmlcopyeditor/
+      - cp -r src/templates /app/share/xmlcopyeditor/
+      - cp -r src/xsl /app/share/xmlcopyeditor/
+      - cp -r src/png /app/share/xmlcopyeditor/
+      - cp -r src/help /app/share/xmlcopyeditor/
       # Create rulesets directory (expected by the app)
       - mkdir -p /app/share/xmlcopyeditor/rulesets
       # Install locales
