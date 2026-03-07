@@ -1,0 +1,20 @@
+--- a/src/wraplibxml.cpp
++++ b/src/wraplibxml.cpp
+@@ -706,7 +706,7 @@ std::string WrapLibxml::lookupError ( xmlErrorPtr err )
+ {
+ if ( !err )
+ {
+-xmlErrorPtr lastErr = xmlGetLastError();
++const xmlError *lastErr = xmlGetLastError();
+ if ( lastErr )
+ err = lastErr;
+ }
+@@ -722,7 +722,7 @@ std::string WrapLibxml::lookupError ( xmlErrorPtr err )
+ {
+ if ( !err )
+ {
+-xmlErrorPtr lastErr = xmlGetLastError();
++const xmlError *lastErr = xmlGetLastError();
+ if ( lastErr )
+ err = lastErr;
+ }

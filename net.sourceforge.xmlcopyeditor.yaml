@@ -75,6 +75,9 @@ modules:
         sha256: e871ca97b86acaf177809f6f9a32e34d3e3da6b27c2a1104574a8fb097d07c91
         dest-filename: xmlcopyeditor-1.3.1.0.tar.gz
       
+      - type: patch
+        path: fix-const-xmlerror.patch
+      
       - type: file
         path: net.sourceforge.xmlcopyeditor.desktop
       
