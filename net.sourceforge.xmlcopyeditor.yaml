@@ -15,34 +15,13 @@ finish-args:
   - --socket=session-bus
 
 modules:
-  # Hicolor icon theme - Base icon theme required by Adwaita
+  # Hicolor icon theme - Base icon theme required by other themes
   - name: hicolor-icon-theme
     buildsystem: meson
     sources:
       - type: archive
         url: https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.18.tar.xz
         sha256: db0e50a80aa3bf64bb45cbca5cf9f75efd9348cf2ac690b907435238c3cf81d7
-
-  # GNOME icon theme - Legacy GTK stock icons needed by wxWidgets
-  - name: gnome-icon-theme
-    buildsystem: autotools
-    sources:
-      - type: archive
-        url: https://download.gnome.org/sources/gnome-icon-theme/3.12/gnome-icon-theme-3.12.0.tar.xz
-        sha256: 359e720b9202d3aba8d477752c4cd11eced368182281d51ffd64c8572b4e503a
-    post-install:
-      - gtk-update-icon-cache -q -t -f /app/share/icons/gnome || true
-
-  # Adwaita icon theme - Modern GTK icons
-  - name: adwaita-icon-theme
-    buildsystem: meson
-    sources:
-      - type: archive
-        url: https://download.gnome.org/sources/adwaita-icon-theme/46/adwaita-icon-theme-46.2.tar.xz
-        sha256: beb126b9429339ba762e0818d5e73b2c46f444975bf80076366eae2d0f96b5cb
-    post-install:
-      - gtk-update-icon-cache -q -t -f /app/share/icons/Adwaita || true
-      - gtk-update-icon-cache -q -t -f /app/share/icons/hicolor || true
 
   # wxWidgets 3.0 - Required by XML Copy Editor
   - name: wxwidgets
@@ -94,6 +73,16 @@ modules:
       - type: archive
         url: https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
         sha256: 67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd
+
+  # GNOME icon theme - Legacy GTK stock icons needed by wxWidgets  
+  - name: gnome-icon-theme
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/gnome-icon-theme/3.12/gnome-icon-theme-3.12.0.tar.xz
+        sha256: 359e720b9202d3aba8d477752c4cd11eced368182281d51ffd64c8572b4e503a
+    post-install:
+      - gtk-update-icon-cache -q -t -f /app/share/icons/gnome || true
 
   # XML Copy Editor
   - name: xmlcopyeditor
