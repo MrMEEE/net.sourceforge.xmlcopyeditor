@@ -78,9 +78,6 @@ modules:
       - type: patch
         path: fix-const-xmlerror.patch
       
-      - type: patch
-        path: fix-wxstandardpaths.patch
-      
       - type: file
         path: net.sourceforge.xmlcopyeditor.desktop
       
@@ -88,6 +85,8 @@ modules:
         path: net.sourceforge.xmlcopyeditor.metainfo.xml
     
     build-commands:
+      # Fix wxStandardPaths: Add SetAppName so it finds /app/share/xmlcopyeditor
+      - sed -i '/#endif$/a\\t// Set application name for wxStandardPaths\n\tSetAppName ( _T ( "xmlcopyeditor" ) );\n' src/xmlcopyeditor.cpp
       - ./configure --prefix=/app
       - make -j${FLATPAK_BUILDER_N_JOBS}
       # Manually install the binary and required files (skip broken make install)
