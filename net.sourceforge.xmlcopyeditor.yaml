@@ -2,7 +2,7 @@ app-id: net.sourceforge.xmlcopyeditor
 runtime: org.freedesktop.Platform
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
-command: xmlcopyeditor
+command: xmlcopyeditor-wrapper.sh
 
 finish-args:
   - --socket=x11
@@ -15,6 +15,14 @@ finish-args:
   - --socket=session-bus
 
 modules:
+  # Hicolor icon theme - Base icon theme required by Adwaita
+  - name: hicolor-icon-theme
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.18.tar.xz
+        sha256: db0e50a80aa3bf64bb45d9423e5e437cffe9f8f9a5d91f3d2f682c4c5156a58f
+
   # Adwaita icon theme - Provides standard GTK icons for wxArtProvider
   - name: adwaita-icon-theme
     buildsystem: meson
@@ -22,6 +30,9 @@ modules:
       - type: archive
         url: https://download.gnome.org/sources/adwaita-icon-theme/46/adwaita-icon-theme-46.2.tar.xz
         sha256: beb126b9429339ba762e0818d5e73b2c46f444975bf80076366eae2d0f96b5cb
+    post-install:
+      - gtk-update-icon-cache -q -t -f /app/share/icons/Adwaita || true
+      - gtk-update-icon-cache -q -t -f /app/share/icons/hicolor || true
 
   # wxWidgets 3.0 - Required by XML Copy Editor
   - name: wxwidgets
@@ -91,6 +102,9 @@ modules:
       
       - type: file
         path: net.sourceforge.xmlcopyeditor.metainfo.xml
+      
+      - type: file
+        path: xmlcopyeditor-wrapper.sh
     
     build-commands:
       # Fix wxStandardPaths: Add SetAppName so it finds /app/share/xmlcopyeditor
@@ -99,6 +113,7 @@ modules:
       - make -j${FLATPAK_BUILDER_N_JOBS}
       # Manually install the binary and required files (skip broken make install)
       - install -Dm755 src/xmlcopyeditor /app/bin/xmlcopyeditor
+      - install -Dm755 xmlcopyeditor-wrapper.sh /app/bin/xmlcopyeditor-wrapper.sh
       - mkdir -p /app/share/xmlcopyeditor
       # Copy all data directories from src/
       - cp -r src/catalog /app/share/xmlcopyeditor/
