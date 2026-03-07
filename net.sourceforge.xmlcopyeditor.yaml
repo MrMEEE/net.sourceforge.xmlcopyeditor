@@ -74,23 +74,16 @@ modules:
         url: https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
         sha256: 67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd
 
-  # icon-naming-utils - Required for gnome-icon-theme
-  - name: icon-naming-utils
+  # Adwaita icon theme 3.38 - Has legacy PNG icons for wxWidgets
+  - name: adwaita-icon-theme
     buildsystem: autotools
     sources:
       - type: archive
-        url: http://tango.freedesktop.org/releases/icon-naming-utils-0.8.90.tar.gz
-        sha256: 044ab2199ed8c6a55ce36fd4fcd8b8021a5e21f5bab028c0a7cdcf52a5902e1c
-
-  # GNOME icon theme - Legacy GTK stock icons needed by wxWidgets  
-  - name: gnome-icon-theme
-    buildsystem: autotools
-    sources:
-      - type: archive
-        url: https://download.gnome.org/sources/gnome-icon-theme/3.12/gnome-icon-theme-3.12.0.tar.xz
-        sha256: 359e720b9202d3aba8d477752c4cd11eced368182281d51ffd64c8572b4e503a
+        url: https://download.gnome.org/sources/adwaita-icon-theme/3.38/adwaita-icon-theme-3.38.0.tar.xz
+        sha256: 6683a1aaf2430ccd9ea638189b8666aed84aea7976bd4781a2764f9610f5cb5d
     post-install:
-      - gtk-update-icon-cache -q -t -f /app/share/icons/gnome || true
+      - gtk-update-icon-cache -q -t -f /app/share/icons/Adwaita || true
+      - gtk-update-icon-cache -q -t -f /app/share/icons/hicolor || true
 
   # XML Copy Editor
   - name: xmlcopyeditor
