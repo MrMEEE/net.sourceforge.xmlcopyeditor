@@ -74,6 +74,14 @@ modules:
         url: https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
         sha256: 67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd
 
+  # icon-naming-utils - Required for gnome-icon-theme
+  - name: icon-naming-utils
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: http://tango.freedesktop.org/releases/icon-naming-utils-0.8.90.tar.gz
+        sha256: 044ab2199ed8c6a55ce36fd4fcd8b8021a5e21f5bab028c0a7cdcf52a5902e1c
+
   # GNOME icon theme - Legacy GTK stock icons needed by wxWidgets  
   - name: gnome-icon-theme
     buildsystem: autotools
