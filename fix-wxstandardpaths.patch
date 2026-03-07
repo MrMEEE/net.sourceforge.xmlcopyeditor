@@ -1,0 +1,12 @@
+--- a/src/xmlcopyeditor.cpp
++++ b/src/xmlcopyeditor.cpp
+@@ -248,6 +248,9 @@ bool MyApp::OnInit()
+        wxLog::SetLogLevel ( wxLOG_Max );
+ #endif
+ 
++       // Set application name for wxStandardPaths to find data directory correctly
++       SetAppName ( _T ( "xmlcopyeditor" ) );
++
+        int systemLocale = myLocale.GetSystemLanguage();
+        switch ( systemLocale )
+        {

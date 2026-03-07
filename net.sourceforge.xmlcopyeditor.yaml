@@ -78,6 +78,9 @@ modules:
       - type: patch
         path: fix-const-xmlerror.patch
       
+      - type: patch
+        path: fix-wxstandardpaths.patch
+      
       - type: file
         path: net.sourceforge.xmlcopyeditor.desktop
       
