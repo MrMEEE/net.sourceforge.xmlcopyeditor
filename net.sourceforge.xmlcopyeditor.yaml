@@ -13,8 +13,19 @@ finish-args:
   - --filesystem=home
   - --filesystem=xdg-documents
   - --socket=session-bus
+  # Access to host icon themes for wxArtProvider
+  - --filesystem=xdg-data/icons:ro
+  - --filesystem=/usr/share/icons:ro
 
 modules:
+  # Adwaita icon theme - Provides standard GTK icons for wxArtProvider
+  - name: adwaita-icon-theme
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/adwaita-icon-theme/46/adwaita-icon-theme-46.2.tar.xz
+        sha256: 939f60d2c6e6c9a98a387696d72be5aa7c40e0245f9fdf66a8bbbf29475574f7
+
   # wxWidgets 3.0 - Required by XML Copy Editor
   - name: wxwidgets
     buildsystem: autotools
