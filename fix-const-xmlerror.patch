@@ -1,20 +1,20 @@
---- a/src/wraplibxml.cpp
-+++ b/src/wraplibxml.cpp
-@@ -706,7 +706,7 @@ std::string WrapLibxml::lookupError ( xmlErrorPtr err )
+--- src/wraplibxml.cpp.orig	2026-03-07 01:21:32.681750347 +0100
++++ src/wraplibxml.cpp	2026-03-07 01:21:32.683286974 +0100
+@@ -706,7 +706,7 @@
+ 
+ wxString WrapLibxml::getLastError()
  {
- if ( !err )
+-	xmlErrorPtr err = xmlGetLastError();
++	const xmlError *err = xmlGetLastError();
+ 
+ 	if ( !err )
+ 		return nonParserError;
+@@ -722,7 +722,7 @@
+ 
+ std::pair<int, int> WrapLibxml::getErrorPosition()
  {
--xmlErrorPtr lastErr = xmlGetLastError();
-+const xmlError *lastErr = xmlGetLastError();
- if ( lastErr )
- err = lastErr;
- }
-@@ -722,7 +722,7 @@ std::string WrapLibxml::lookupError ( xmlErrorPtr err )
- {
- if ( !err )
- {
--xmlErrorPtr lastErr = xmlGetLastError();
-+const xmlError *lastErr = xmlGetLastError();
- if ( lastErr )
- err = lastErr;
- }
+-	xmlErrorPtr err = xmlGetLastError();
++	const xmlError *err = xmlGetLastError();
+ 	if ( !err )
+ 		return std::make_pair ( 1, 1 );
+ 
